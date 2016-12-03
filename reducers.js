@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 import { 
-  LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_SUCCESS
+  LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_SUCCESS, FETCH_SUCCESS
 } from './actions'
 
 // The auth reducer. The starting state sets authentication
@@ -43,10 +43,26 @@ function auth(state = {
     }
 }
 
+function postFetch(state = {
+  isFetching: false,
+  posts: []
+}, action) {
+  switch (action.type) {
+    case  FETCH_SUCCESS:
+      return Object.assign({}, state, {
+        isFetching: false,
+        posts: action.posts
+      })
+    default:
+      return state
+    }
+}
+
 // We combine the reducers here so that they
 // can be left split apart above
 const userLogin = combineReducers({
-  auth
+  auth,
+  postFetch
 })
 
 export default userLogin
