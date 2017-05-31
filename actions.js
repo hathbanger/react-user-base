@@ -88,9 +88,8 @@ export function loginUser(creds) {
           return Promise.reject(user)
         }
         else {
-          // If login was successful, set the token in local storage
-          localStorage.setItem('id_token', user.auth_token)
-          // console.log("user token: ", user)
+          console.log('user', user);
+          localStorage.setItem('token', user.token)
           
           // Dispatch the success action
           dispatch(receiveLogin(user))
@@ -103,7 +102,7 @@ export function loginUser(creds) {
 export function logoutUser() {
   return dispatch => {
     dispatch(requestLogout())
-    localStorage.removeItem('id_token')
+    // localStorage.removeItem('id_token')
     dispatch(receiveLogout())
   }
 }

@@ -6,7 +6,7 @@ export default class Login extends Component {
     const { errorMessage } = this.props
     
     return (
-      <div>
+      <div >
         <input type='text' ref='username' className="form-control" style={{ marginRight: '5px' }} placeholder='Username'/>
         <input type='password' ref='password' className="form-control" style={{ marginRight: '5px' }} placeholder='Password'/>
         <button onClick={(event) => this.handleClick(event)} className="btn btn-primary">
